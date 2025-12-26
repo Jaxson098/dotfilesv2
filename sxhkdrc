@@ -1,0 +1,118 @@
+# Focus window to the left/right/up/down with Super + arrows
+super + Left
+	bspc node -f west
+super + Right
+	bspc node -f east
+super + Up
+	bspc node -f north
+super + Down
+	bspc node -f south
+
+# Open Alacritty with Super + q
+super + q
+	alacritty
+
+super + alt + c
+	~/.config/polybar/audioOutputSwitch.sh
+
+# Close the focused window with Super + c
+super + c
+	bspc node -c
+
+# Open dmenu with Super + d
+super + d
+	rofi -show run
+
+Print
+	flameshot gui
+
+super + t
+	thunar
+
+# Change desktop with Super + [1-9]
+super + 1
+	bspc desktop -f '^1'
+super + 2
+	bspc desktop -f '^2'
+super + 3
+	bspc desktop -f '^3'
+super + 4
+	bspc desktop -f '^4'
+super + 5
+	bspc desktop -f '^5'
+super + 6
+	bspc desktop -f '^6'
+super + 7
+	bspc desktop -f '^7'
+super + 8
+	bspc desktop -f '^8'
+super + 9
+	bspc desktop -f '^9'
+super + 0
+	bspc desktop -f '^10'
+
+# Send focused window to desktop with Super + ctrl + [1-9]
+super + shift + 1
+	bspc node -d '^1'
+super + shift + 2
+	bspc node -d '^2'
+super + shift + 3
+	bspc node -d '^3'
+super + shift + 4
+	bspc node -d '^4'
+super + shift + 5
+	bspc node -d '^5'
+super + shift + 6
+	bspc node -d '^6'
+super + shift + 7
+	bspc node -d '^7'
+super + shift + 8
+	bspc node -d '^8'
+super + shift + 9
+	bspc node -d '^9'
+super + shift + 0
+	bspc node -d '^10'
+
+#move windows
+ctrl + super + Left
+	bspc node -n west
+ctrl + super + Right
+	bspc node -n east
+ctrl + super + Up
+	bspc node -s north
+ctrl + super + Down
+	bspc node -s south
+
+# Quit X11 with Ctrl + Super + Alt + Backspace
+ctrl + super + alt + BackSpace
+	pkill Xorg
+
+# Reload sxhkd config with Super + r
+super + r
+	pkill -USR1 -x sxhkd
+	bspc wm -r
+
+super + v
+	bspc node -t ~fullscreen
+
+# Open Firefox with Super + f
+super + f
+	firefox
+super + s
+	spotify-launcher
+
+#audio
+super + alt + Up
+	wpctl set-volume @DEFAULT_AUDIO_SINK@ "5%+"
+
+super + alt + Down
+	wpctl set-volume @DEFAULT_AUDIO_SINK@ "5%-"
+
+super + alt + space
+	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+
+super + alt + Right
+	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+
+super + alt + Left
+	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
